@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Add a new word</h1>
+    <form action='/submit_word' method='post'>
+    {% csrf_token %}
+        <input type="text" name="word"><br>
+    <h2>Choose a color</h2>
+        <label><input type="radio" name="color" value = "red">Red</label><br>
+        <label><input type="radio" name="color" value = "green">Green</label><br>
+        <label><input type="radio" name="color" value = "blue">Blue</label><br><br>
+
+  <label><input type="checkbox" name = "font" value="True">Show in BIG fonts!</label><br>
+ <button type="submit">Submit</button><br>
+</form>
+<h2>Session Show</h2>
+  {% for display in show  %}
+  <font size="{{ display.largeFont }}" color ="{{ display.color }}">{{ display.word }}</font> - added {{ display.display_time }} <br/>
+  {% endfor %}
+
+
+      <a href="/clear">clear session</a>
+
+</body>
+</html>
+
